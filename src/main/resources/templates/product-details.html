@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Product Details - Product Management</title>
+
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+
+<body>
+
+<div class="details-container">
+
+    <div class="details-header">
+        <h1>Product Details</h1>
+        <p>View product information</p>
+    </div>
+
+    <div class="details-card">
+
+        <div class="detail-item">
+            <span class="detail-label">Product ID</span>
+            <span class="detail-value" th:text="${product.id}"></span>
+        </div>
+
+        <div class="detail-item">
+            <span class="detail-label">Product Name</span>
+            <span class="detail-value" th:text="${product.name}"></span>
+        </div>
+
+        <div class="detail-item">
+            <span class="detail-label">Price</span>
+            <span class="detail-value">
+                Rs. <span th:text="${product.price}"></span>
+            </span>
+        </div>
+
+        <div class="detail-item">
+            <span class="detail-label">Quantity</span>
+            <span class="detail-value" th:text="${product.quantity}"></span>
+        </div>
+
+        <div class="detail-item total-value">
+            <span class="detail-label">Total Value</span>
+            <span class="detail-value">
+                Rs. <span th:text="${product.price * product.quantity}"></span>
+            </span>
+        </div>
+
+    </div>
+
+    <div class="details-buttons">
+
+        <a th:href="@{/products/edit/{id}(id=${product.id})}"
+           class="edit-product-button">
+            Edit Product
+        </a>
+
+        <a href="/products"
+           class="back-button-link">
+            Back to Products
+        </a>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>

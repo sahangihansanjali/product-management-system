@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Products - Product Management</title>
+
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+
+<body>
+
+<div class="products-container">
+
+    <!-- Header -->
+
+    <div class="products-header">
+
+        <div>
+            <h1>Product Management</h1>
+            <p>Manage your products</p>
+        </div>
+
+        <a href="/products/new">
+            <button type="button">+ Add New Product</button>
+        </a>
+
+    </div>
+
+
+    <!-- Search -->
+
+    <div class="search-box">
+
+        <form action="/products" method="get">
+
+            <input type="text"
+                   name="search"
+                   th:value="${search}"
+                   placeholder="Search product name...">
+
+            <button type="submit">Search</button>
+
+            <a href="/products">
+                <button type="button">Clear</button>
+            </a>
+
+        </form>
+
+    </div>
+
+
+    <!-- Products Table -->
+
+    <div class="table-container">
+
+        <table>
+
+            <thead>
+
+                <tr>
+                    <th>ID</th>
+                    <th>Product Name</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Actions</th>
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                <tr th:each="product : ${products}">
+
+                    <td th:text="${product.id}"></td>
+
+                    <td th:text="${product.name}"></td>
+
+                    <td>
+                        Rs. <span th:text="${product.price}"></span>
+                    </td>
+
+                    <td th:text="${product.quantity}"></td>
+
+                    <td class="actions">
+
+                        <a th:href="@{/products/view/{id}(id=${product.id})}">
+                            View
+                        </a>
+
+                        <a th:href="@{/products/edit/{id}(id=${product.id})}">
+                            Edit
+                        </a>
+
+                        <a th:href="@{/products/delete/{id}(id=${product.id})}"
+                           onclick="return confirm('Are you sure you want to delete this product?');">
+                            Delete
+                        </a>
+
+                    </td>
+
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+
+    <!-- Back -->
+
+    <div class="back-section">
+
+        <a href="/">← Back to Dashboard</a>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>

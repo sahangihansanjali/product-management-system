@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Product Management Dashboard</title>
+
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+
+<body>
+
+<div class="dashboard-container">
+
+    <div class="dashboard-header">
+
+        <div>
+            <h1>Product Management System</h1>
+            <p>Dashboard</p>
+        </div>
+
+        <form th:action="@{/logout}" method="post"
+              class="logout-form">
+
+            <button type="submit">Logout</button>
+
+        </form>
+
+    </div>
+
+
+    <div class="dashboard-cards">
+
+        <div class="dashboard-card">
+
+            <div class="card-icon">📦</div>
+
+            <h3>Total Products</h3>
+
+            <p th:text="${totalProducts}">0</p>
+
+        </div>
+
+
+        <div class="dashboard-card">
+
+            <div class="card-icon">🔢</div>
+
+            <h3>Total Quantity</h3>
+
+            <p th:text="${totalQuantity}">0</p>
+
+        </div>
+
+
+        <div class="dashboard-card">
+
+            <div class="card-icon">💰</div>
+
+            <h3>Inventory Value</h3>
+
+            <p>
+                Rs. <span th:text="${totalInventoryValue}">0</span>
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="dashboard-actions">
+
+        <a href="/products">
+            <button type="button">
+                View Products
+            </button>
+        </a>
+
+        <a href="/products/new">
+            <button type="button">
+                Add New Product
+            </button>
+        </a>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>
